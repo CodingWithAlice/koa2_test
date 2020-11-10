@@ -18,17 +18,21 @@ const app = new koa();
 //   .use(router.routes())
 //   .use(router.allowedMethods());
 
-// 路由实现方式2 - 简易:
+// 路由实现方式2 - 简易且推荐:
 const router = require('koa-router')(); // 引入并实现
 router.get('/', async (ctx) => {
+    // 路由跳转方式1:get传值：在链接中直接传参数，可以通过 ctx.query【推荐】/ctx.querystring
+    console.log('ctx==', ctx.querystring);
     ctx.body = 'hello koa2';
 })
 
-router.get('/star', async (ctx) => {
+router.get('/star/:id', async (ctx) => {
+    //  路由跳转方式2:动态路由：在链接里面匹配到类 /star/212 即会跳转当前路由
     ctx.body = 'hello 千玺';
 })
 
-router.get('/cat', async (ctx) => {
+router.get('/cat/:sex/:age', async (ctx) => {
+    //  路由跳转方式2:动态路由：可以配置多个动态路由
     ctx.body = 'hello 阿秋';
 })
 // 使用【中间件】启动路由
