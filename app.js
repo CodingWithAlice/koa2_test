@@ -28,6 +28,7 @@ router.get('/', async (ctx) => {
 
 router.get('/star/:id', async (ctx) => {
     //  路由跳转方式2:动态路由：在链接里面匹配到类 /star/212 即会跳转当前路由
+    console.log(ctx.params); //{ id: '212' }
     ctx.body = 'hello 千玺';
 })
 
