@@ -4,6 +4,9 @@ const app = new koa();
 
 const router = require('koa-router')(); // 引入并实现
 
+var bodyParser = require('koa-bodyparser');
+app.use(bodyParser());
+
 const views = require('koa-views');
 app.use(views('views',{
     extension: 'ejs',
@@ -11,8 +14,12 @@ app.use(views('views',{
 
 router.get('/', async (ctx) => {
     ctx.body = 'hello koa2';
-    await ctx.render('basis')
+    await ctx.render('post')
 })
+// 接收 post 中提交的数据
+router.post('/toAdd', (ctx) => {
+    ctx.body = ctx.request.body;
+});
 
 router.get('/star', async (ctx) => {
     ctx.body = 'hello 千玺';
