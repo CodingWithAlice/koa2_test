@@ -7,5 +7,26 @@
 </head>
 <body>
     这是一个ejs的模版引擎
+    <h1><%=title%></h1>
+
+    <!-- 循环  -->
+    <ul>
+        <%for(var i=0;i<list.length;i++) { %>
+        <li><%=list[i] %></li>
+        <%}%>
+    </ul>
+
+    <!-- 绑定html模版 -->
+    <h1><%-html%></h1>
+
+    <!-- 条件判断 -->
+    <% if(num>20){ %>
+        <div>大于20</div>
+    <%} else{ %>
+        <div>小于20</div> <%} 
+    %>
+
+    <!-- 公共数据 -->
+    <h1>我是<%=name%></h1>
 </body>
 </html>
