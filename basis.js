@@ -11,7 +11,9 @@ app.use(views('views',{
 
 router.get('/', async (ctx) => {
     ctx.body = 'hello koa2';
-    await ctx.render('basis')
+    await ctx.render('basis', {
+        title: 'basis',
+    });
 })
 
 router.get('/star', async (ctx) => {
